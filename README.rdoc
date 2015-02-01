@@ -1,3 +1,8 @@
 == Forssan Taekwondoseuran Portaali
 
-{<img src="https://travis-ci.org/Eepa/ftkdportaali.png?branch=master" alt="Build Status" />}[https://travis-ci.org/Eepa/ftkdportaali]
+http://ftkdportaali.herokuapp.com/
+
+http://ftkdportaali-development.herokuapp.com/
+
+Master Travis: {<img src="https://travis-ci.org/Eepa/ftkdportaali.png?branch=master" alt="Build Status" />}[https://travis-ci.org/Eepa/ftkdportaali]
+
