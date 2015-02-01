@@ -1,17 +1,31 @@
 language: ruby
 
 rvm:
- - 2.2.0
+- 2.2.0
 
 gemfile:
-  - Gemfile
+- Gemfile
 
 cache:
-  - bundler
+- bundler
 
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec cucumber
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec cucumber
+- bundle exec rspec -fd spec/
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: Uq7Lgf8Llxjm85q6rgi4YK8kBGoeobMwOUXE1rqS7WMNzUaVOLT/CA7iAVKTH1Q2SqKVTrNzhtckIAex1Ut9k39hemY2KDXZQjISKyT2iSeqT6IevO1p994F5lZez217TY1TdJn4fHuXvLJE7gZ25cIFs2Qng/uTiiD1UkeEVWE=
+  run:
+   - "rake db:migrate"
+   - restart
+   - "rake cleanup"
+  app: 
+   development: ftkdportaali-development
+   master: ftkdportaali
+  on:
+    repo: Eepa/ftkdportaali
