@@ -24,11 +24,11 @@ RSpec.describe TrainingsController, type: :controller do
   # Training. As you add validations to Training, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {description: "Hyvä treeni", duration: 60, time: "18:30", day: "2015-02-12"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {description: "Hyvä treeni", duration: 29, time: "18:30", day: "2015-02-12"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,19 @@ RSpec.describe TrainingsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {description: "Hyvä treeni!", duration: 90, time: "18:00", day: "2015-02-13"}
       }
 
       it "updates the requested training" do
         training = Training.create! valid_attributes
         put :update, {:id => training.to_param, :training => new_attributes}, valid_session
         training.reload
-        skip("Add assertions for updated state")
+        expect(training).to be_valid
+        expect(training.description).to eq("Hyvä treeni!")
+        expect(training.duration).to eq(90)
+        expect(training.day.to_s).to eq("2015-02-13")
+        expect(training.time.to_s(:time)).to eq("18:00")
+
       end
 
       it "assigns the requested training as @training" do
